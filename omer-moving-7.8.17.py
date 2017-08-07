@@ -12,17 +12,17 @@ DOWN_EDGE = -250
 RIGHT_EDGE = 400
 LEFT_EDGE = -400
 
-#turtle.setup(SIZE_X, SIZE_Y)
-## makes the border box for the game:
-##turtle.pensize(10)
-##turtle.penup()
-##turtle.goto(RIGHT_EDGE, UP_EDGE)
-##turtle.pendown()
-##turtle.goto(RIGHT_EDGE, DOWN_EDGE)
-##turtle.goto(LEFT_EDGE, DOWN_EDGE)
-##turtle.goto(LEFT_EDGE-10, UP_EDGE-10)
-##turtle.goto(RIGHT_EDGE-10, UP_EDGE-10)
-##turtle.penup()
+turtle.setup(SIZE_X, SIZE_Y)
+##makes the border box for the game:
+turtle.pensize(10)
+turtle.penup()
+turtle.goto(RIGHT_EDGE, UP_EDGE)
+turtle.pendown()
+turtle.goto(RIGHT_EDGE, DOWN_EDGE)
+turtle.goto(LEFT_EDGE, DOWN_EDGE)
+turtle.goto(LEFT_EDGE-10, UP_EDGE-10)
+turtle.goto(RIGHT_EDGE-10, UP_EDGE-10)
+turtle.penup()
 
 
 turtle.register_shape('car.gif')
@@ -131,22 +131,7 @@ def move_car():
     
     new_stamp = car.stamp()
     stamp_list.append(new_stamp)
-    ###pop 0 ele. in pos_list to get #RID OF THE TAIL LAST PIECE#######
-    
-    
-
-    # the car is eating the food
-    if car.pos() in food_pos:
-        food_ind = food_pos.index(car.pos())
-        food.clearstamp(food_stamps[food_ind])
-        food_pos.pop(food_ind)
-        food_stamps.pop(food_ind)
-        make_food()
-    else:
-        old_stamp = stamp_list.pop(0)
-        car.clearstamp(old_stamp)
-        pos_list.pop(0)
-##BORDER TUCHED - GAME OVER
+   
     
     if new_x_pos >= RIGHT_EDGE:
         for t in range(200):
@@ -167,12 +152,7 @@ def move_car():
         for t in range(200):
             print("you hit the DOWN edge! GAME OVER!")
         quit()
-     ### car DONT EAT YOURSELF !!!
-    
-##    if new_pos in pos_list[:-1]:
-##        print("you eat yourslef ! GAME OVER!")
-##        quit()
-
+     
         
     turtle.ontimer(move_car, TIME_STEP)
 
