@@ -5,30 +5,40 @@ import turtle
 
 import time
 
-def countdown(t):
-    turtle.hideturtle()
-    turtle.penup()
-    turtle.pensize(5)
-    turtle.goto(250, 250)
-    turtle.pendown()
-    turtle.goto(250, 280)
-    turtle.goto(180, 280)
-    turtle.goto(180, 250)
-    turtle.goto(250, 250)
 
 
-    timer = turtle.clone()
-    
+turtle.hideturtle()
+turtle.penup()
+turtle.pensize(5)
+turtle.goto(250, 250)
+turtle.pendown()
+turtle.goto(250, 280)
+turtle.goto(180, 280)
+turtle.goto(180, 250)
+turtle.goto(250, 250)
+turtle.penup()
+turtle.goto(215, 255)
+
+
+timer = turtle.clone()
+b = turtle.clone()
+b.penup()
+b.showturtle()
+b.shape("square")
+
+b.color("white")
+b.goto(223,265)
+
+def countdown(t):    
     while t >= 0:
-        timer.clear()
+        b.stamp()
         timer.write(t)
         time.sleep(1)
-        t -= 1
-    print('Goodbye! \n \n \n \n \n')
+        t -= 1        
+    quit()
 
-countdown(5)
+countdown(180)
 
-##turtle.ontime(time , 1000)
     
 
 
@@ -43,4 +53,3 @@ countdown(5)
 
 
 
-turtle.mainloop()
