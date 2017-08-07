@@ -5,22 +5,24 @@ stamp_list= []
 food_pos = []
 food_stamps= []
 
+
+
 UP_EDGE = 250
 DOWN_EDGE = -250
 RIGHT_EDGE = 400
 LEFT_EDGE = -400
 
-#turtle.setup(SIZE_X, SIZE_Y)
-## makes the border box for the game:
-##turtle.pensize(10)
-##turtle.penup()
-##turtle.goto(RIGHT_EDGE, UP_EDGE)
-##turtle.pendown()
-##turtle.goto(RIGHT_EDGE, DOWN_EDGE)
-##turtle.goto(LEFT_EDGE, DOWN_EDGE)
-##turtle.goto(LEFT_EDGE-10, UP_EDGE-10)
-##turtle.goto(RIGHT_EDGE-10, UP_EDGE-10)
-##turtle.penup()
+turtle.setup(SIZE_X, SIZE_Y)
+##makes the border box for the game:
+turtle.pensize(10)
+turtle.penup()
+turtle.goto(RIGHT_EDGE, UP_EDGE)
+turtle.pendown()
+turtle.goto(RIGHT_EDGE, DOWN_EDGE)
+turtle.goto(LEFT_EDGE, DOWN_EDGE)
+turtle.goto(LEFT_EDGE-10, UP_EDGE-10)
+turtle.goto(RIGHT_EDGE-10, UP_EDGE-10)
+turtle.penup()
 
 
 turtle.register_shape('car.gif')
@@ -28,6 +30,7 @@ car = turtle.clone()
 car.shape("car.gif")
 
 car.penup()
+turtle.hideturtle()
 
 
 UP_ARROW = "Up"
@@ -47,11 +50,11 @@ SPACBAR = 5
 direction  = UP
 SQUARE_SIZE = 20
 
+move_comand = [UP, DOWN, RIGHT, LEFT]
 
-
-food = turtle.clone()
-food.shape("square")
-food.hideturtle()
+##food = turtle.clone()
+##food.shape("square")
+##food.hideturtle()
 
 
 def up():
@@ -63,8 +66,7 @@ def up():
 def down():
     global direction
     #if direction != UP:
-    direction= DOWN
-    
+    direction= DOWN  
     print("You pressed the DOWN key")
 
 def left():
@@ -78,17 +80,19 @@ def right():
     global direction
     #if direction!=LEFT:
     direction= RIGHT
+    print("You pressed the RIGHT key")
 
 def stop_move():
     global direction
     direction = SPACBAR
-    print("You pressed the RIGHT key")
+    for i in range(2):
+        print("You pressed the SPACBAR key")
 
 turtle.onkeypress( up, UP_ARROW)
 turtle.onkeypress( down, DOWN_ARROW)
 turtle.onkeypress( left, LEFT_ARROW)
 turtle.onkeypress( right, RIGHT_ARROW)
-turtle.onkeypress( stop_move , SPACBAR)
+turtle.onkeypress( stop_move , SPACEBAR)
 turtle.listen()
 
 
@@ -116,7 +120,8 @@ def move_car():
         car.goto( x_pos , y_pos-SQUARE_SIZE)
         print("you moved down!")
     elif direction == SPACBAR:
-            print("you r stock")
+        print()
+        
 
     my_pos = car.pos()
     new_pos= my_pos
@@ -126,45 +131,30 @@ def move_car():
     
     new_stamp = car.stamp()
     stamp_list.append(new_stamp)
-    ###pop 0 ele. in pos_list to get #RID OF THE TAIL LAST PIECE#######
-    
-    
-
-    # the car is eating the food
-    if car.pos() in food_pos:
-        food_ind = food_pos.index(car.pos())
-        food.clearstamp(food_stamps[food_ind])
-        food_pos.pop(food_ind)
-        food_stamps.pop(food_ind)
-        make_food()
-    else:
-        old_stamp = stamp_list.pop(0)
-        car.clearstamp(old_stamp)
-        pos_list.pop(0)
-##BORDER TUCHED - GAME OVER
+   
     
     if new_x_pos >= RIGHT_EDGE:
-        print("you hit the right edge! GAME OVER!")
+        for t in range(200):
+            print("you hit the RIGHT edge! GAME OVER!")
         quit()
 
     if new_x_pos <= LEFT_EDGE:
-        print("you hit the left edge! GAME OVER!")
+        for t in range(200):
+            print("you hit the LEFT edge! GAME OVER!")
         quit()
 
     if new_y_pos >= UP_EDGE:
-        print("you hit the top edge! GAME OVER!")
+        for t in range(200):
+            print("you hit the TOP edge! GAME OVER!")
         quit()
 
     if new_y_pos <= DOWN_EDGE:
-        print("you hit the down edge! GAME OVER!")
+        for t in range(200):
+            print("you hit the DOWN edge! GAME OVER!")
         quit()
-     ### car DONT EAT YOURSELF !!!
-    
-    if new_pos in pos_list[:-1]:
-        print("you eat yourslef ! GAME OVER!")
-        quit()
-
+     
         
     turtle.ontimer(move_car, TIME_STEP)
 
-move_car()
+if direction in move_comand:
+    move_car()
