@@ -110,6 +110,6 @@ def make_food():
     food_stamps.append(b)
     clone.hideturtle()
     
-
+make_food()
 ############################################
 
