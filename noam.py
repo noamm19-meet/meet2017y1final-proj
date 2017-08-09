@@ -38,22 +38,3 @@ def countdown(t):
     quit()
 
 countdown(180)
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
