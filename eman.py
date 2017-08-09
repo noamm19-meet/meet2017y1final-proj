@@ -20,12 +20,12 @@ food.shape("burger.gif")
 food_pos=[]
 food_stamps=[]
 food_list = []
+wall_list = []
 
 all_points = []
 for x in range(-250, 250 - square_size + 1, square_size):
     for y in range(-250 + square_size, 250 + 1, square_size):
         all_points.append((x,y))
-wall_list = []
 
 s_all_points = set(all_points)
 s_wall_points = set(wall_points)

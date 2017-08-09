@@ -32,37 +32,34 @@ UP  = 0
 DOWN = 1
 LEFT = 2
 RIGHT = 3
-
 direction = UP
+
 def up1():
     global direction
     direction = UP 
     move_car()
     print("u press up")
+    
 def left1():
     global direction
     direction = LEFT
     move_car()
     print("u press left")
+    
 def right1():
     global direction
     direction = RIGHT
     move_car()
     print("u press right")
+    
 def down1():
-    global directon
+    global direction
     direction = DOWN
     move_car()
     print("u press down")
-
-
-turtle.onkeypress(up1 ,UP_ARROW)
-turtle.onkeypress(left1 , LEFT_ARROW)
-turtle.onkeypress(down1 , DOWN_ARROW)
-turtle.onkeypress(right1 , RIGHT_ARROW)
-turtle.listen()
-
+    
 def move_car():
+    global direction
     my_car = car.pos()
     carx_pos = my_car[0]
     cary_pos = my_car[1]
@@ -89,3 +86,14 @@ def move_car():
     car.clearstamp(old_car_stamp)
     car_pos_list.pop(0)
     
+
+
+
+
+turtle.onkeypress(up1 ,UP_ARROW)
+turtle.onkeypress(left1 , LEFT_ARROW)
+turtle.onkeypress(down1 , DOWN_ARROW)
+turtle.onkeypress(right1 , RIGHT_ARROW)
+turtle.listen()
+
+
