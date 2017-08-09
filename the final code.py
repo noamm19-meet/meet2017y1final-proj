@@ -62,18 +62,14 @@ border.penup()
 
 # random_maze ( how many blocks )
 wall_list = random_maze(150)
-
-
-############################################
 # car movement
-
-
 turtle.penup()
-
 square_size = 20
 starlen = 1
 car_pos_list = []
 car_stamp_list =[]
+
+turtle.register_shape('car.gif')
 car = turtle.clone()
 car.shape("turtle")
 car.color('blue')
@@ -128,24 +124,24 @@ def move_car():
     my_car = car.pos()
     carx_pos = my_car[0]
     cary_pos = my_car[1]
-    if my_car in wall_list:
-        print('wall')
-    elif my_car not in wall_list:
-        if direction == UP:
-            car.goto(carx_pos , cary_pos + square_size)
-            print("go up")
-        elif direction == DOWN:
-            car.goto(carx_pos , cary_pos - square_size)
-            print("go down")
-        elif direction == RIGHT:
-            car.goto(carx_pos + square_size , cary_pos)
-            print("go right")
-        elif direction == LEFT:
-            car.goto(carx_pos - square_size , cary_pos)
-            print("go left")
+##    if my_car in wall_list:
+##        print('wall')
+##    elif my_car not in wall_list:
+    if direction == UP:
+        car.goto(carx_pos , cary_pos + square_size)
+        print("go up")
+    elif direction == DOWN:
+        car.goto(carx_pos , cary_pos - square_size)
+        print("go down")
+    elif direction == RIGHT:
+        car.goto(carx_pos + square_size , cary_pos)
+        print("go right")
+    elif direction == LEFT:
+        car.goto(carx_pos - square_size , cary_pos)
+        print("go left")
     
         
-    
+    car.showturtle()
 
     my_car = car.pos()
     car_pos_list.append(my_car)
@@ -166,23 +162,27 @@ turtle.onkeypress(right1 , RIGHT_ARROW)
 turtle.listen()
 
 ########### the food and the score #############
+###########the food and the score#############
+
+
+square_size=20
 score=0
 pos_list=[]
 stamp_list=[]
 food_pos=[]
 food_stamps=[]
-turtle.showturtle()
-turtle.hideturtle()
+
 turtle.penup()
-#turtle.register_shape("burger.gif")
+number_of_burgers=random.randint(5,15)
+turtle.register_shape("burger.gif")
 food = turtle.clone()
-food.shape("square")
-food.color('blue')
+food.shape("circle")
+food.color('red')
 food_pos=[]
 food_stamps=[]
 food_list = []
-xpos = -250, 250 - square_size + 1, square_size
-ypos = -250 + square_size, 250 + 1, square_size
+wall_list = []
+
 all_points = []
 for x in range(-250, 250 - square_size + 1, square_size):
     for y in range(-250 + square_size, 250 + 1, square_size):
@@ -192,14 +192,6 @@ s_all_points = set(all_points)
 s_wall_points = set(wall_list)
 s_free_points = s_all_points - s_wall_points
 free_points = list(s_free_points)
-
-number_of_burgers=random.randint(5,15)
-for num in range(number_of_burgers):
-    obj = turtle.clone()
-    obj.hideturtle()
-    obj.shape("square")
-    obj.color("red")
-    food_list.append(obj)
 
 
 def make_food():
@@ -215,54 +207,53 @@ def make_food():
         food_stamps.pop(food_ind)
         print("You have eaten the food!")
         score+=1
-        print(score)
 
     for clone in food_list:
-        #print(free_points)
         rand_index = random.randint(0, len(free_points) - 1)
         position = free_points[rand_index]
         while position in wall_list:
             rand_index = random.randint(0, len(free_points) - 1)
             position = free_points[rand_index]
+            
+
         food_pos.append(position)
         clone.goto(position)
-        draw_square(position[0], position[1], square_size, "red")
+        b=clone.stamp()
+        food_stamps.append(b)
+        clone.hideturtle()
 
-make_food()
+
+make_food()        
+     
 ############################################
-turtle.hideturtle()
-turtle.penup()
-turtle.pensize(5)
-turtle.goto(250, 250)
-turtle.pendown()
-turtle.goto(250, 280)
-turtle.goto(180, 280)
-turtle.goto(180, 250)
-turtle.goto(250, 250)
-turtle.penup() 
-turtle.goto(215, 255)
-timer = turtle.clone()
-b = turtle.clone()
-b.penup()
-b.showturtle()
-b.shape("square")
-b.color("white")
-b.goto(223,265)
+##turtle.hideturtle()
+##turtle.penup()
+##turtle.pensize(5)
+##turtle.goto(250, 250)
+##turtle.pendown()
+##turtle.goto(250, 280)
+##turtle.goto(180, 280)
+##turtle.goto(180, 250)
+##turtle.goto(250, 250)
+##turtle.penup() 
+##turtle.goto(215, 255)
+##timer = turtle.clone()
+##b = turtle.clone()
+##b.penup()
+##b.showturtle()
+##b.shape("square")
+##b.color("white")
+##b.goto(223,265)
+##
+##def countdown(t):    
+##    while t >= 0:
+##        b.stamp()
+##        timer.write(t)
+##        t -= 1        
+##    quit()
+##turtle.ontimer(countdown , 1)
+##countdown(180)    
 
-def countdown(t):    
-    while t >= 0:
-        b.stamp()
-        timer.write(t)
-        t -= 1        
-    quit()
-turtle.ontimer(countdown , 1)
-countdown(180)
-
-
-
-
-
-    
 
 
 

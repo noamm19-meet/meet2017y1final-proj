@@ -28,7 +28,7 @@ for x in range(-250, 250 - square_size + 1, square_size):
         all_points.append((x,y))
 
 s_all_points = set(all_points)
-s_wall_points = set(wall_points)
+s_wall_points = set(wall_list)
 s_free_points = s_all_points - s_wall_points
 free_points = list(s_free_points)
 
@@ -64,5 +64,5 @@ def make_food():
 
 make_food()        
     
-    
+make_food()    
 ############################################
