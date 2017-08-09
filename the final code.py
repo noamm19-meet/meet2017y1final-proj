@@ -105,7 +105,6 @@ for num in range(number_of_burgers):
 
 def make_food():
 
-<<<<<<< HEAD
       for i in range(number_of_burgers):
           food_list.append(food.clone())
 
@@ -133,7 +132,7 @@ def make_food():
           food_stamps.append(b)
           clone.hideturtle()
 make_food()
-=======
+
 ##    for i in range(number_of_burgers):
 ##        food_list.append(food.clone())
 ##
