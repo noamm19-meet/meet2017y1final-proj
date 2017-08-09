@@ -26,9 +26,9 @@ turtle.setup(SIZE_X, SIZE_Y)
 ##turtle.penup()
 
 
-turtle.register_shape('car.gif')
+turtle.register_shape('car3.gif')
 car = turtle.clone()
-car.shape("car.gif")
+car.shape("car3.gif")
 
 car.penup()
 turtle.hideturtle()
@@ -152,6 +152,6 @@ def move_car():
 ##        quit()
 ##     
         
-    turtle.ontimer(move_car, TIME_STEP)
+    #turtle.ontimer(move_car, TIME_STEP)
 
 

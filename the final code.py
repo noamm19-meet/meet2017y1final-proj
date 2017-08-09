@@ -39,7 +39,7 @@ def random_maze(n):
         set_wall_list.add(all_points[rand_index])
         draw_square(all_points[rand_index][0], all_points[rand_index][1], square_size, "black")
 
-    return list(set_wall_list)    
+##    return list(set_wall_list)    
 #window
 x_size = 600
 y_size = 600
@@ -62,7 +62,6 @@ border.penup()
 # random_maze ( how many blocks )
 wall_list = random_maze(150)
 
-<<<<<<< HEAD
 
 ###########the food and the score#############
 score=0
@@ -70,10 +69,12 @@ pos_list=[]
 stamp_list=[]
 food_pos=[]
 food_stamps=[]
-turtle.register_shape('car.gif')
+turtle.register_shape('car3.gif')
 car = turtle.clone()
-car.shape("car.gif")
+car.shape("car3.gif")
 turtle.hideturtle()
+car.showturtle()
+
 turtle.penup()
 turtle.register_shape("burger.gif")
 food = turtle.clone()
@@ -136,24 +137,17 @@ def make_food():
         
         
 make_food()
-<<<<<<< HEAD
-
-
-make_food()
-
-=======
->>>>>>> 7a1067e7feaf8a1a13cfce50114ae8b36fccd694
 ############################################
 #car movement
-import turtle
+
 
 sizex = 800
 sizey = 500
 
 turtle.setup(sizex,sizey)
-=======
+
 # car movement
->>>>>>> babe218c197cca147deb0ce68d61865809e6461f
+
 
 turtle.penup()
 
@@ -161,9 +155,15 @@ square_size = 20
 starlen = 1
 car_pos_list = []
 car_stamp_list =[]
+turtle.register_shape('car3.gif')
 car = turtle.clone()
-car.shape("turtle")
+car.shape("car3.gif")
+
 turtle.hideturtle()
+
+car.penup()
+turtle.hideturtle()
+
 
 for i in range (starlen):
     mycarx = car.pos()[0]
@@ -237,10 +237,6 @@ def move_car():
     old_car_stamp = car_stamp_list.pop(0)
     car.clearstamp(old_car_stamp)
     car_pos_list.pop(0)
-    
-
-
-
 
 turtle.onkeypress(up1 ,UP_ARROW)
 turtle.onkeypress(left1 , LEFT_ARROW)
@@ -284,33 +280,7 @@ for num in range(number_of_burgers):
     food_list.append(obj)
 
 
-def make_food():
 
-    for i in range(number_of_burgers):
-        food_list.append(food.clone())
-
-
-    if car.pos() in food_pos:
-        food_ind=food_pos.index(car.pos())
-        food.clearstamp(food_stamps[food_ind])
-        food_pos.pop(food_ind)
-        food_stamps.pop(food_ind)
-        print("You have eaten the food!")
-        score+=1
-        print(score)
-
-    for clone in food_list:
-        #print(free_points)
-        rand_index = random.randint(0, len(free_points) - 1)
-        position = free_points[rand_index]
-        while position in wall_list:
-            rand_index = random.randint(0, len(free_points) - 1)
-            position = free_points[rand_index]
-        food_pos.append(position)
-        clone.goto(position)
-        draw_square(position[0], position[1], square_size, "red")
-
-make_food()
 ############################################
 
 
