@@ -1,27 +1,32 @@
-###########the food and the score#############
-import turtle
-import random
+#################################the food and the score##########################
 
-square_size=20
+#printing the score on the screen
+turtle.hideturtle()
+turtle.penup()
+turtle.pensize(5)
+turtle.goto(175, 250)
+turtle.pendown()
+turtle.goto(175, 280)
+turtle.goto(110, 280)
+turtle.goto(110, 250)
+turtle.goto(175, 250)
+##############################
 score=0
+turtle.register_shape('car.gif')
+car = turtle.clone()
+car.shape("car.gif")
+turtle.penup()
 pos_list=[]
 stamp_list=[]
 food_pos=[]
 food_stamps=[]
-turtle.register_shape('car.gif')
-car = turtle.clone()
-car.shape("car.gif")
-turtle.hideturtle()
-turtle.penup()
-number_of_burgers=random.randint(1,5)
+number_of_burgers=random.randint(5,15)
 turtle.register_shape("burger.gif")
 food = turtle.clone()
 food.shape("burger.gif")
 food_pos=[]
 food_stamps=[]
 food_list = []
-wall_list = []
-
 all_points = []
 for x in range(-250, 250 - square_size + 1, square_size):
     for y in range(-250 + square_size, 250 + 1, square_size):
@@ -31,7 +36,6 @@ s_all_points = set(all_points)
 s_wall_points = set(wall_list)
 s_free_points = s_all_points - s_wall_points
 free_points = list(s_free_points)
-
 
 def make_food():
 
@@ -46,6 +50,15 @@ def make_food():
         food_stamps.pop(food_ind)
         print("You have eaten the food!")
         score+=1
+        turtle.penup() 
+        turtle.goto(142.5, 260.5)
+        turtle.write(score)
+        c = turtle.clone()
+        c.penup()
+        c.showturtle()
+        c.shape("square")
+        c.color("white")
+        c.goto(142.5, 265)
 
     for clone in food_list:
         rand_index = random.randint(0, len(free_points) - 1)
@@ -60,9 +73,5 @@ def make_food():
         b=clone.stamp()
         food_stamps.append(b)
         clone.hideturtle()
-
-
-make_food()        
-    
-make_food()    
-############################################
+make_food()
+################################################################################
