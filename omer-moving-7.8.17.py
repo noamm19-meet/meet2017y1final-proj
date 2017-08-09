@@ -50,7 +50,7 @@ SPACBAR = 5
 direction  = UP
 SQUARE_SIZE = 20
 
-move_comand = [UP, DOWN, RIGHT, LEFT]
+##move_comand = [UP, DOWN, RIGHT, LEFT]
 
 ##food = turtle.clone()
 ##food.shape("square")
