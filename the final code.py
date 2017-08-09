@@ -136,10 +136,13 @@ def make_food():
 ##        b=clone.stamp()
 ##        food_stamps.append(b)
 ##        clone.hideturtle()
+
+
+        
+        
 make_food()
-    
-<<<<<<< HEAD
+
+
 make_food()
-=======
->>>>>>> 480f42d884e96f341ddcb11fbe95f33f42c1c3aa
+
 ############################################
