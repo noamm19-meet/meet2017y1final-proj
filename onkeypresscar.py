@@ -1,5 +1,5 @@
 import turtle
-
+wall_list = [150,150]
 sizex = 800
 sizey = 500
 
