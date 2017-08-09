@@ -17,7 +17,7 @@ def draw_square(x,y,a, color):
     drawer.end_fill()
     drawer.fillcolor(color)
     wall_list.append(drawer.pos())
-#making a random maze , duh 
+################################ making a random maze ##########################
 def random_maze(n):
     """
     Choose n random positions
@@ -64,26 +64,23 @@ wall_list = random_maze(150)
 
 
 
-###########the food and the score#############
+#################################the food and the score##########################
 score=0
+turtle.register_shape('car.gif')
+car = turtle.clone()
+car.shape("car.gif")
+turtle.penup()
 pos_list=[]
 stamp_list=[]
 food_pos=[]
 food_stamps=[]
-turtle.register_shape('car.gif')
-car = turtle.clone()
-car.shape("car.gif")
-turtle.hideturtle()
-turtle.penup()
+number_of_burgers=random.randint(5,15)
 turtle.register_shape("burger.gif")
 food = turtle.clone()
-food.shape("square")
-food.color('blue')
+food.shape("burger.gif")
 food_pos=[]
 food_stamps=[]
 food_list = []
-xpos = -250, 250 - square_size + 1, square_size
-ypos = -250 + square_size, 250 + 1, square_size
 all_points = []
 for x in range(-250, 250 - square_size + 1, square_size):
     for y in range(-250 + square_size, 250 + 1, square_size):
@@ -94,85 +91,40 @@ s_wall_points = set(wall_list)
 s_free_points = s_all_points - s_wall_points
 free_points = list(s_free_points)
 
-number_of_burgers=random.randint(5,15)
-for num in range(number_of_burgers):
-    obj = turtle.clone()
-    obj.hideturtle()
-    obj.shape("square")
-    obj.color("red")
-    food_list.append(obj)
-
 
 def make_food():
 
-      for i in range(number_of_burgers):
-          food_list.append(food.clone())
+    for i in range(number_of_burgers):
+        food_list.append(food.clone())
 
 
-      if car.pos() in food_pos:
-          food_ind=food_pos.index(car.pos())
-          food.clearstamp(food_stamps[food_ind])
-          food_pos.pop(food_ind)
-          food_stamps.pop(food_ind)
-          print("You have eaten the food!")
-          score+=1
-          print(score)
-
-    #for clone in food_list:
-        #print(free_points)
-        #rand_index = random.randint(0, len(free_points) - 1)
-        #position = free_points[rand_index]
-        #while position in wall_list:
-           # rand_index = random.randint(0, len(free_points) - 1)
-           # position = free_points[rand_index]
-        #food_pos.append(position)
-        #clone.goto(position)
-       # draw_square(position[0], position[1], square_size, "red")
-          b=clone.stamp()
-          food_stamps.append(b)
-          clone.hideturtle()
-make_food()
-
-##    for i in range(number_of_burgers):
-##        food_list.append(food.clone())
-##
-##
-##    if car.pos() in food_pos:
-##        food_ind=food_pos.index(car.pos())
-##        food.clearstamp(food_stamps[food_ind])
-##        food_pos.pop(food_ind)
-##        food_stamps.pop(food_ind)
-##        print("You have eaten the food!")
-##        score+=1
-##        print(score)
+    if car.pos() in food_pos:
+        food_ind=food_pos.index(car.pos())
+        food.clearstamp(food_stamps[food_ind])
+        food_pos.pop(food_ind)
+        food_stamps.pop(food_ind)
+        print("You have eaten the food!")
+        score+=1
+        
 
     for clone in food_list:
-        print(free_points)
         rand_index = random.randint(0, len(free_points) - 1)
         position = free_points[rand_index]
         while position in wall_list:
             rand_index = random.randint(0, len(free_points) - 1)
             position = free_points[rand_index]
+            
+
         food_pos.append(position)
         clone.goto(position)
-        draw_square(position[0], position[1], square_size, "red")
-##        b=clone.stamp()
-##        food_stamps.append(b)
-##        clone.hideturtle()
+        b=clone.stamp()
+        food_stamps.append(b)
+        clone.hideturtle()
 
-
-        
-        
+turtle.write(score)
 make_food()
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 7a1067e7feaf8a1a13cfce50114ae8b36fccd694
->>>>>>> 7218c5f17f580aa865f7694b524f2ee31d26aefe
->>>>>>> 00e8cdbe1db88fe9ebe561d109e3e90625ed018d
-############################################
-#car movement
+#####################################car movement################################
 import turtle
 
 sizex = 800
@@ -276,72 +228,8 @@ turtle.onkeypress(down1 , DOWN_ARROW)
 turtle.onkeypress(right1 , RIGHT_ARROW)
 turtle.listen()
 
-########### the food and the score #############
-score=0
-pos_list=[]
-stamp_list=[]
-food_pos=[]
-food_stamps=[]
-turtle.hideturtle()
-turtle.penup()
-#turtle.register_shape("burger.gif")
-food = turtle.clone()
-food.shape("square")
-food.color('blue')
-food_pos=[]
-food_stamps=[]
-food_list = []
-xpos = -250, 250 - square_size + 1, square_size
-ypos = -250 + square_size, 250 + 1, square_size
-all_points = []
-for x in range(-250, 250 - square_size + 1, square_size):
-    for y in range(-250 + square_size, 250 + 1, square_size):
-        all_points.append((x,y))
 
-s_all_points = set(all_points)
-s_wall_points = set(wall_list)
-s_free_points = s_all_points - s_wall_points
-free_points = list(s_free_points)
-
-number_of_burgers=random.randint(5,15)
-for num in range(number_of_burgers):
-    obj = turtle.clone()
-    obj.hideturtle()
-    obj.shape("square")
-    obj.color("red")
-    food_list.append(obj)
-
-
-def make_food():
-
-    for i in range(number_of_burgers):
-        food_list.append(food.clone())
-
-
-    if car.pos() in food_pos:
-        food_ind=food_pos.index(car.pos())
-        food.clearstamp(food_stamps[food_ind])
-        food_pos.pop(food_ind)
-        food_stamps.pop(food_ind)
-        print("You have eaten the food!")
-        score+=1
-        print(score)
-
-    for clone in food_list:
-        #print(free_points)
-        rand_index = random.randint(0, len(free_points) - 1)
-        position = free_points[rand_index]
-        while position in wall_list:
-            rand_index = random.randint(0, len(free_points) - 1)
-            position = free_points[rand_index]
-        food_pos.append(position)
-        clone.goto(position)
-        draw_square(position[0], position[1], square_size, "red")
-
-make_food()
-############################################
-
-
+#################################timer##########################################
 
 import turtle
 
@@ -381,25 +269,4 @@ def countdown(t):
     quit()
 
 countdown(10)
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#################################################################################
