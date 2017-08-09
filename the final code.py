@@ -1,9 +1,11 @@
 import turtle
 import random
 import time
+
 square_size = 20
 turtle.tracer(1,0)
 wall_list = []
+
 def draw_square(x,y,a, color):
     drawer = turtle.clone()
     drawer.penup()
@@ -18,6 +20,7 @@ def draw_square(x,y,a, color):
     drawer.end_fill()
     drawer.fillcolor(color)
     wall_list.append(drawer.pos())
+    
 #making a random maze , duh 
 def random_maze(n):
     """
@@ -62,7 +65,8 @@ border.penup()
 
 # random_maze ( how many blocks )
 wall_list = random_maze(150)
-# car movement
+
+### car movement ###
 turtle.penup()
 square_size = 20
 starlen = 1
@@ -99,46 +103,43 @@ def up1():
     global direction
     direction = UP 
     move_car()
-    print("u press up")
+    #print("u press up")
     
 def left1():
     global direction
     direction = LEFT
     move_car()
-    print("u press left")
+    #print("u press left")
     
 def right1():
     global direction
     direction = RIGHT
     move_car()
-    print("u press right")
+    #print("u press right")
     
 def down1():
     global direction
     direction = DOWN
     move_car()
-    print("u press down")
+    #print("u press down")
     
 def move_car():
     global direction,wall_list
     my_car = car.pos()
     carx_pos = my_car[0]
     cary_pos = my_car[1]
-##    if my_car in wall_list:
-##        print('wall')
-##    elif my_car not in wall_list:
     if direction == UP:
         car.goto(carx_pos , cary_pos + square_size)
-        print("go up")
+        #print("go up")
     elif direction == DOWN:
         car.goto(carx_pos , cary_pos - square_size)
-        print("go down")
+        #print("go down")
     elif direction == RIGHT:
         car.goto(carx_pos + square_size , cary_pos)
-        print("go right")
+        #print("go right")
     elif direction == LEFT:
         car.goto(carx_pos - square_size , cary_pos)
-        print("go left")
+        #print("go left")
     
         
     car.showturtle()
@@ -150,11 +151,22 @@ def move_car():
     old_car_stamp = car_stamp_list.pop(0)
     car.clearstamp(old_car_stamp)
     car_pos_list.pop(0)
-    
 
-
-
-
+    carx_pos = my_car[0]
+    cary_pos = my_car[1]
+    my_car_new = (carx_pos-square_size/2,cary_pos+square_size/2)
+    if my_car_new in wall_list:
+        if direction == UP:
+            car.goto(my_car[0], my_car[1] - square_size)
+        elif direction == DOWN:
+            car.goto(my_car[0], my_car[1] + square_size)
+        elif direction == LEFT:
+            car.goto(my_car[0]+square_size, my_car[1])
+        elif direction == RIGHT:
+            car.goto(my_car[0] - square_size, my_car[1])
+        
+   
+#make that turtle listen >:(
 turtle.onkeypress(up1 ,UP_ARROW)
 turtle.onkeypress(left1 , LEFT_ARROW)
 turtle.onkeypress(down1 , DOWN_ARROW)
@@ -162,10 +174,6 @@ turtle.onkeypress(right1 , RIGHT_ARROW)
 turtle.listen()
 
 ########### the food and the score #############
-###########the food and the score#############
-
-
-square_size=20
 score=0
 pos_list=[]
 stamp_list=[]
@@ -181,7 +189,6 @@ food.color('red')
 food_pos=[]
 food_stamps=[]
 food_list = []
-wall_list = []
 
 all_points = []
 for x in range(-250, 250 - square_size + 1, square_size):
@@ -226,33 +233,37 @@ def make_food():
 make_food()        
      
 ############################################
-##turtle.hideturtle()
-##turtle.penup()
-##turtle.pensize(5)
-##turtle.goto(250, 250)
-##turtle.pendown()
-##turtle.goto(250, 280)
-##turtle.goto(180, 280)
-##turtle.goto(180, 250)
-##turtle.goto(250, 250)
-##turtle.penup() 
-##turtle.goto(215, 255)
-##timer = turtle.clone()
-##b = turtle.clone()
-##b.penup()
-##b.showturtle()
-##b.shape("square")
-##b.color("white")
-##b.goto(223,265)
-##
-##def countdown(t):    
-##    while t >= 0:
-##        b.stamp()
-##        timer.write(t)
-##        t -= 1        
-##    quit()
-##turtle.ontimer(countdown , 1)
-##countdown(180)    
+turtle.hideturtle()
+turtle.penup()
+turtle.pensize(5)
+turtle.goto(250, 250)
+turtle.pendown()
+turtle.goto(250, 280)
+turtle.goto(180, 280)
+turtle.goto(180, 250)
+turtle.goto(250, 250)
+turtle.penup() 
+turtle.goto(215, 255)
+timer = turtle.clone()
+b = turtle.clone()
+b.penup()
+b.showturtle()
+b.shape("square")
+b.color("white")
+b.goto(223,265)
+
+t = 180
+def countdown():
+    global t
+    if t >= 0:
+        b.stamp()
+        timer.write(t)
+        t -= 1        
+    else:
+        quit()
+    turtle.ontimer(countdown , 1000)
+    
+countdown()    
 
 
 
