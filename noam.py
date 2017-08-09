@@ -16,7 +16,7 @@ turtle.goto(250, 280)
 turtle.goto(180, 280)
 turtle.goto(180, 250)
 turtle.goto(250, 250)
-turtle.penup()
+turtle.penup() 
 turtle.goto(215, 255)
 
 
@@ -38,6 +38,10 @@ def countdown(t):
     quit()
 
 countdown(180)
+
+
+
+
 
     
 

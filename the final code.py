@@ -105,6 +105,7 @@ for num in range(number_of_burgers):
 
 def make_food():
 
+<<<<<<< HEAD
       for i in range(number_of_burgers):
           food_list.append(food.clone())
 
@@ -132,6 +133,46 @@ def make_food():
           food_stamps.append(b)
           clone.hideturtle()
 make_food()
+=======
+##    for i in range(number_of_burgers):
+##        food_list.append(food.clone())
+##
+##
+##    if car.pos() in food_pos:
+##        food_ind=food_pos.index(car.pos())
+##        food.clearstamp(food_stamps[food_ind])
+##        food_pos.pop(food_ind)
+##        food_stamps.pop(food_ind)
+##        print("You have eaten the food!")
+##        score+=1
+##        print(score)
+
+    for clone in food_list:
+        print(free_points)
+        rand_index = random.randint(0, len(free_points) - 1)
+        position = free_points[rand_index]
+        while position in wall_list:
+            rand_index = random.randint(0, len(free_points) - 1)
+            position = free_points[rand_index]
+        food_pos.append(position)
+        clone.goto(position)
+        draw_square(position[0], position[1], square_size, "red")
+##        b=clone.stamp()
+##        food_stamps.append(b)
+##        clone.hideturtle()
+
+
+        
+        
+make_food()
+<<<<<<< HEAD
+
+
+make_food()
+
+=======
+>>>>>>> 7a1067e7feaf8a1a13cfce50114ae8b36fccd694
+>>>>>>> 7218c5f17f580aa865f7694b524f2ee31d26aefe
 ############################################
 #car movement
 import turtle
