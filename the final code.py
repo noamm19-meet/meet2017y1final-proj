@@ -20,12 +20,10 @@ def draw_square(x,y,a, color):
     drawer.end_fill()
     drawer.fillcolor(color)
     wall_list.append(drawer.pos())
-<<<<<<< HEAD
-    
+
 #making a random maze , duh 
-=======
-################################ making a random maze ##########################
->>>>>>> bb494b584188824bb6fd70a904c98654b460fb1b
+### making a random maze ###
+
 def random_maze(n):
     """
     Choose n random positions
@@ -68,21 +66,10 @@ border.goto(250,250)
 border.penup()
 
 # random_maze ( how many blocks )
-wall_list = random_maze(150)
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-=======
-### car movement ###
-=======
-<<<<<<< HEAD
->>>>>>> dee705d33f0656555f191af8ea821a206f52be1d
-
-
 
 #################################the food and the score##########################
 score=0
-<<<<<<< HEAD
+
 pos_list=[]
 stamp_list=[]
 food_pos=[]
@@ -92,12 +79,10 @@ car = turtle.clone()
 car.shape("car3.gif")
 turtle.hideturtle()
 car.showturtle()
-
-=======
 turtle.register_shape('car.gif')
 car = turtle.clone()
 car.shape("car.gif")
->>>>>>> dee705d33f0656555f191af8ea821a206f52be1d
+
 turtle.penup()
 pos_list=[]
 stamp_list=[]
@@ -146,7 +131,6 @@ def make_food():
 
         food_pos.append(position)
         clone.goto(position)
-<<<<<<< HEAD
         draw_square(position[0], position[1], square_size, "red")
 ##        b=clone.stamp()
 ##        food_stamps.append(b)
@@ -157,41 +141,15 @@ def make_food():
         
 make_food()
 ############################################
-#car movement
-
-=======
-        b=clone.stamp()
-        food_stamps.append(b)
-        clone.hideturtle()
-
-turtle.write(score)
-make_food()
-
 #####################################car movement################################
-import turtle
->>>>>>> dee705d33f0656555f191af8ea821a206f52be1d
-
-sizex = 800
-sizey = 500
-
-turtle.setup(sizex,sizey)
-
-<<<<<<< HEAD
-# car movement
 
 
-=======
-=======
->>>>>>> b9724f878b02a8f64cbe316c68e2d56668c5677a
-# car movement
->>>>>>> bb494b584188824bb6fd70a904c98654b460fb1b
->>>>>>> dee705d33f0656555f191af8ea821a206f52be1d
 turtle.penup()
 square_size = 20
 starlen = 1
 car_pos_list = []
 car_stamp_list =[]
-<<<<<<< HEAD
+
 turtle.register_shape('car3.gif')
 car = turtle.clone()
 car.shape("car3.gif")
@@ -199,14 +157,12 @@ car.shape("car3.gif")
 turtle.hideturtle()
 
 car.penup()
-=======
 
 turtle.register_shape('car.gif')
 car = turtle.clone()
 car.shape("turtle")
 car.color('blue')
 car.showturtle()
->>>>>>> dee705d33f0656555f191af8ea821a206f52be1d
 turtle.hideturtle()
 
 
@@ -303,16 +259,7 @@ turtle.onkeypress(down1 , DOWN_ARROW)
 turtle.onkeypress(right1 , RIGHT_ARROW)
 turtle.listen()
 
-<<<<<<< HEAD
-
-#################################timer##########################################
-
-import turtle
-
-
-import time
-
-
+#timer
 
 turtle.hideturtle()
 turtle.penup()
@@ -346,7 +293,6 @@ def countdown(t):
 
 countdown(10)
 #################################################################################
-=======
 ########### the food and the score #############
 score=0
 pos_list=[]
@@ -375,9 +321,7 @@ s_free_points = s_all_points - s_wall_points
 free_points = list(s_free_points)
 
 
-<<<<<<< HEAD
 
-=======
 def make_food():
 
     for i in range(number_of_burgers):
@@ -409,7 +353,6 @@ def make_food():
 
 make_food()        
      
->>>>>>> dee705d33f0656555f191af8ea821a206f52be1d
 ############################################
 turtle.hideturtle()
 turtle.penup()
@@ -458,4 +401,4 @@ countdown()
 
 
 
->>>>>>> b9724f878b02a8f64cbe316c68e2d56668c5677a
+
