@@ -60,6 +60,9 @@ def make_food():
         b=clone.stamp()
         food_stamps.append(b)
         clone.hideturtle()
+
+
+make_food()        
     
     
 ############################################
