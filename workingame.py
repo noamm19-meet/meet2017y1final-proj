@@ -6,7 +6,7 @@ square_size = 20
 turtle.tracer(1,0)
 wall_list = []
 
-turtle.bgcolor("blue") 
+turtle.bgcolor("green") 
 
 
 def draw_square(x,y,a, color):
