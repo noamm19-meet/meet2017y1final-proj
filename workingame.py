@@ -60,6 +60,7 @@ up_edge = 250
 
 border = turtle.clone()
 border.hideturtle()
+border.color('yellow')
 border.pensize(5)
 border.penup()
 border.goto(250,250)
@@ -81,10 +82,9 @@ starlen = 1
 car_pos_list = []
 car_stamp_list =[]
 
-#turtle.register_shape('car.gif')
+turtle.register_shape('man.gif')
 car = turtle.clone()
-car.shape("turtle")
-car.color('blue')
+car.shape('man.gif')
 car.showturtle()
 
 turtle.hideturtle()
@@ -97,11 +97,15 @@ food_pos=[]
 food_stamps=[]
 
 turtle.penup()
+<<<<<<< HEAD
 number_of_burgers=random.randint(5,20)
 #turtle.register_shape("burger.gif")
+=======
+number_of_burgers=random.randint(5,15)
+turtle.register_shape("burger.gif")
+>>>>>>> 0568a138ef0326e9534d1484b9fd0dd003e136f7
 food = turtle.clone()
-food.shape("circle")
-food.color('red')
+food.shape("burger.gif")
 food.hideturtle()
 food_pos=[]
 food_stamps=[]
@@ -195,8 +199,14 @@ def move_car():
             car.goto(my_car[0]+square_size, my_car[1])
         elif direction == RIGHT:
             car.goto(my_car[0] - square_size, my_car[1])
-        elif my_car >= (250,0):
-            car.goto(my_car[0] - square_size , my_car[1])
+    if carx_pos >= 250:
+        car.goto(my_car[0] - square_size , my_car[1])
+    if carx_pos <= -250:
+        car.goto(my_car[0] + square_size , my_car[1])
+    if cary_pos >= 250:
+        car.goto(my_car[0] , my_car[1]- square_size )
+    if cary_pos <= -250:
+        car.goto(my_car[0]  , my_car[1]+ square_size)
     
     if car.pos() in food_pos:
         food_ind=food_pos.index(car.pos())
@@ -208,8 +218,9 @@ def move_car():
         #food.clearstamp(food_id)
         #food_temp = food_list.pop(food_ind)
         #del food_temp
-        print("You have eaten the food!")
-        score+=1
+        #print("You have eaten the food!")
+        score += 1
+        print("score is :" + str(score))
 #make that turtle listen >:(
 turtle.onkeypress(up1 ,UP_ARROW)
 turtle.onkeypress(left1 , LEFT_ARROW)
@@ -272,15 +283,29 @@ b.showturtle()
 b.shape("square")
 b.color("white")
 b.goto(223,265)
+<<<<<<< HEAD
 
 t = 30
+=======
+s=turtle.clone()
+s.goto(-255,255)
+t = 5
+>>>>>>> 0568a138ef0326e9534d1484b9fd0dd003e136f7
 def countdown():
     global t
     if t >= 0:
         b.clear()
-        timer.write(t)
+        s.clear()
+        timer.write(t, font=("Arial" , 10 , "normal"))
+        s.write("score : " + str(score), font=("Arial" , 10 , "normal"))
         t -= 1        
     else:
+        turtle.clear()
+        b.clear()
+        s.clear()
+        turtle.color('red')
+        turtle.write('TIME IS UP GAME OVER!, YOU COLLECTED '+ str(score) + ' FOOD',align="right", font=("Arial", 15, "normal"))
+        time.sleep(2.5)
         quit()
     turtle.ontimer(countdown , 1000)
     
