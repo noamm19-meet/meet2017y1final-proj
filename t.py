@@ -139,6 +139,17 @@ DOWN_EDGE= -250
 RIGHT_EDGE= 250
 LEFT_EDGE= -250
 
+################
+import winsound
+winsound.PlaySound("filename", winsound.SND_ASYNC | winsound.SND_ALIAS )
+
+
+winsound.PlaySound(None, winsound.SND_ASYNC)
+In mac or other platforms: You can try this Pygame/SDL
+
+pygame.mixer.init()
+pygame.mixer.music.load("file.mp3")
+pygame.mixer.music.play()
     
    
 

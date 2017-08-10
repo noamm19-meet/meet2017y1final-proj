@@ -6,6 +6,7 @@ square_size = 20
 turtle.tracer(1,0)
 wall_list = []
 
+turtle.bgcolor("blue") 
 
 
 def draw_square(x,y,a, color):
@@ -97,13 +98,13 @@ food_pos=[]
 food_stamps=[]
 
 turtle.penup()
-<<<<<<< HEAD
+
 number_of_burgers=random.randint(5,20)
 #turtle.register_shape("burger.gif")
-=======
-number_of_burgers=random.randint(5,15)
+
+number_of_burgers=random.randint(5,100)
 turtle.register_shape("burger.gif")
->>>>>>> 0568a138ef0326e9534d1484b9fd0dd003e136f7
+
 food = turtle.clone()
 food.shape("burger.gif")
 food.hideturtle()
@@ -283,14 +284,14 @@ b.showturtle()
 b.shape("square")
 b.color("white")
 b.goto(223,265)
-<<<<<<< HEAD
+
 
 t = 30
-=======
+
 s=turtle.clone()
 s.goto(-255,255)
-t = 5
->>>>>>> 0568a138ef0326e9534d1484b9fd0dd003e136f7
+t = 30
+
 def countdown():
     global t
     if t >= 0:
